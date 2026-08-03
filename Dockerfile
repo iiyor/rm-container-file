@@ -1,6 +1,7 @@
 FROM alpine:latest
+ARG CACHEBUST=1
 
+RUN echo "build-marker-$(date +%s)" > /marker.txt
 RUN echo "hello" > hello.txt
-RUN ls
 RUN rm -f hello.txt
-RUN ls
+CMD ["sh", "-c", "cat /marker.txt && sleep infinity"]
